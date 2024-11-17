@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load form_filters %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Connexion</h1>
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            <div>
+                <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Nom d'utilisateur
+                </label>
+                {{ form.username|add_class:"block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200" }}
+            </div>
+            <div>
+                <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    Mot de passe
+                </label>
+                {{ form.password|add_class:"block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200" }}
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                Se connecter
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

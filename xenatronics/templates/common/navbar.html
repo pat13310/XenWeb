@@ -1,0 +1,53 @@
+{% load static %}
+<nav class="h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white w-64 shadow-lg">
+    <ul class="mt-6 space-y-2">
+        <!-- Accueil -->
+        <li class="group">
+            <a href="{% url 'home:home' %}" class="flex items-center p-4 hover:bg-gray-700 transition duration-200">
+                <i class="fas fa-home w-6 group-hover:scale-110 transition-transform duration-200"></i>
+                <span class="ml-4 text-gray-200 group-hover:text-blue-400 font-medium">Accueil</span>
+            </a>
+        </li>
+
+        {% if user.is_authenticated %}
+        <!-- Profil -->
+        <li class="group">
+            <a href="{% url 'home:profile' %}" class="flex items-center p-4 hover:bg-gray-700 transition duration-200">
+                <i class="fas fa-user  w-5 group-hover:scale-110 transition-transform duration-200"></i>
+                <span class="ml-4 text-gray-200 group-hover:text-purple-400 font-medium">Profil</span>
+            </a>
+        </li>
+
+        <!-- Projets -->
+        <li class="group">
+            <a href="https://github.com/mon-utilisateur" target="_blank"
+               class="flex items-center p-4 hover:bg-gray-700 transition duration-200">
+                <i class="fab fa-github w-5 group-hover:scale-110 transition-transform duration-200"></i>
+                <span class="ml-4 text-gray-200 group-hover:text-yellow-400 font-medium">Projets</span>
+            </a>
+        </li>
+
+        <!-- Déconnexion -->
+        <li class="group">
+            <form method="post" action="{% url 'home:logout' %}">
+                {% csrf_token %}
+                <div class="flex items-center p-4 hover:bg-gray-700 transition duration-200">
+                    <i class="fas fa-sign-out-alt w-5 group-hover:scale-110 transition-transform duration-200"></i>
+                    <button type="submit"
+                            class="ml-4 text-gray-200 group-hover:text-red-400 font-medium transition-colors duration-200">
+                        Se déconnecter
+                    </button>
+                </div>
+            </form>
+        </li>
+        {% else %}
+        <!-- Connexion -->
+        <li class="group">
+            <a href="{% url 'home:login' %}" class="flex items-center p-4 hover:bg-gray-700 transition duration-200">
+                <i class="fas fa-sign-in-alt w-5 group-hover:scale-110 transition-transform duration-200"></i>
+                <span class="ml-4 text-gray-200 group-hover:text-green-400 font-medium">Connexion</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>

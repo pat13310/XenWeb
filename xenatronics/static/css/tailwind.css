@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Champs d'entrée personnalisés */
+.input-field {
+    @apply w-full border-0 border-gray-300 bg-transparent py-2 focus:border-b transition-all duration-300 !important;
+}
+
+.input-field:focus {
+    @apply border-blue-500 outline-none !important;
+}
+
+/* Texte des étiquettes */
+.label-text {
+    @apply block text-gray-700 font-medium mb-1 mr-1;
+}
